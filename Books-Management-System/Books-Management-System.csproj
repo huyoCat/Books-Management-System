@@ -46,6 +46,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AD_FormEditBookInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormEditBookInfo.Designer.cs">
+      <DependentUpon>AD_FormEditBookInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AD_FormLendBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormLendBook.Designer.cs">
+      <DependentUpon>AD_FormLendBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BO_FormAddReader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BO_FormAddReader.Designer.cs">
+      <DependentUpon>BO_FormAddReader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BO_FormBooksList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BO_FormBooksList.Designer.cs">
+      <DependentUpon>BO_FormBooksList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CBLendBookList.cs" />
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AD_FormAddBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormAddBooks.Designer.cs">
+      <DependentUpon>AD_FormAddBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AD_FormReaderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormReaderList.Designer.cs">
+      <DependentUpon>AD_FormReaderList.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +98,28 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlHelper.cs" />
+    <Compile Include="TagObject.cs" />
+    <EmbeddedResource Include="AD_FormEditBookInfo.resx">
+      <DependentUpon>AD_FormEditBookInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AD_FormLendBook.resx">
+      <DependentUpon>AD_FormLendBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BO_FormAddReader.resx">
+      <DependentUpon>BO_FormAddReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BO_FormBooksList.resx">
+      <DependentUpon>BO_FormBooksList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AD_FormAddBooks.resx">
+      <DependentUpon>AD_FormAddBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AD_FormReaderList.resx">
+      <DependentUpon>AD_FormReaderList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

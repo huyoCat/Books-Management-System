@@ -100,6 +100,9 @@ namespace Books_Management_System
                     int count = (int)o;
                     MessageBox.Show("登录成功！", "登录提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     //转到主页面
+                    FormMain formMain = new FormMain();
+                    formMain.Show();
+                    this.Hide();
                 }
             }
 
@@ -109,6 +112,11 @@ namespace Books_Management_System
         private void button_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void loginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

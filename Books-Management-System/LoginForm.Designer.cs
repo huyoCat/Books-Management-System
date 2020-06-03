@@ -149,6 +149,7 @@
             this.MaximizeBox = false;
             this.Name = "loginForm";
             this.Text = "WELCOME!";
+            this.Load += new System.EventHandler(this.loginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider_login)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

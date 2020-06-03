@@ -5,13 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Data;
+using System.Reflection;
 
 namespace Books_Management_System
 {
     public class SqlHelper
     {
         //windouws身份验证
-        private static readonly string connectionString = "server=.;database=BooksManagementSystem;Integrated Security=true";
+        //private static readonly string connectionString = "server=.;database=BooksManagementSystem;Integrated Security=true";
+        //SQL server验证
+        public static readonly string connectionString = "server=.;database=BooksManagementSystem;uid=sa;pwd=1064534251";
         public static object ExecuteScalar(string sql,params SqlParameter[] parameters)
         {
             object o = null;
@@ -36,6 +40,91 @@ namespace Books_Management_System
 
 
                 return o;
+        }
+        public static DataTable GetDataTable(string sql,params SqlParameter[] parameters)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                //创建command对象
+                SqlCommand command = new SqlCommand(sql, connection);
+                //command.CommandType = CommandType.StoredProcedure;存储过程
+                if (parameters != null)
+                {
+                    command.Parameters.Clear();
+                    command.Parameters.AddRange(parameters);
+                }
+
+                //打开连接
+                //connection.Open();
+
+                //执行命令
+                SqlDataAdapter dataAdapter = new SqlDataAdapter();
+                dataAdapter.SelectCommand = command;
+
+                //打开连接，数据填充
+                dataAdapter.Fill(dataTable);
+
+                //关闭连接
+                //connection.Close();
+            }
+            return dataTable;
+        }
+
+
+        /// <summary>
+        /// 返回受影响的行数
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public static int ExecuteNonQuery(string sql,params SqlParameter[] parameters)
+        {
+            int count = 0;
+            using(SqlConnection connection=new SqlConnection(connectionString))
+            {
+                //创建command对象
+                SqlCommand command = new SqlCommand(sql, connection);
+                //command.CommandType = CommandType.StoredProcedure;存储过程
+                command.Parameters.Clear();
+                command.Parameters.AddRange(parameters);
+
+                //打开连接
+                connection.Open();
+
+                //执行命令
+                count = command.ExecuteNonQuery();//执行查询，返回受影响的行数
+
+                //关闭连接
+                //connection.Close();
+            }
+            return count;
+        }
+
+        /// <summary>
+        /// 执行查询，返回数据流
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public static SqlDataReader ExecuteReader(string sql,params SqlParameter[] parameters)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.Clear();
+                command.Parameters.AddRange(parameters);
+                SqlDataReader dataReader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                return dataReader;
+            }
+            catch(SqlException ex)
+            {
+                connection.Close();
+                throw new Exception("执行出现异常", ex);
+            }
         }
     }
 }
