@@ -1,6 +1,6 @@
 ﻿namespace Books_Management_System
 {
-    partial class BO_FormBooksList
+    partial class AD_FormbackBook
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_searchCondition = new System.Windows.Forms.GroupBox();
             this.button_search = new System.Windows.Forms.Button();
@@ -37,7 +36,6 @@
             this.comboBox_searchWay = new System.Windows.Forms.ComboBox();
             this.label_Sway = new System.Windows.Forms.Label();
             this.DGVBookList = new System.Windows.Forms.DataGridView();
-            this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Bid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,9 +43,10 @@
             this.Bsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bsum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bremainder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColEdit = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.ColDel = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.btDelAll = new System.Windows.Forms.Button();
+            this.Bout = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bback = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.outBook = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox_searchCondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVBookList)).BeginInit();
             this.SuspendLayout();
@@ -56,16 +55,15 @@
             // 
             this.groupBox_searchCondition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox_searchCondition.Controls.Add(this.btDelAll);
             this.groupBox_searchCondition.Controls.Add(this.button_search);
             this.groupBox_searchCondition.Controls.Add(this.label_keyWord);
             this.groupBox_searchCondition.Controls.Add(this.textBox_keyWord);
             this.groupBox_searchCondition.Controls.Add(this.comboBox_searchWay);
             this.groupBox_searchCondition.Controls.Add(this.label_Sway);
-            this.groupBox_searchCondition.Location = new System.Drawing.Point(25, 33);
+            this.groupBox_searchCondition.Location = new System.Drawing.Point(12, 7);
             this.groupBox_searchCondition.Name = "groupBox_searchCondition";
-            this.groupBox_searchCondition.Size = new System.Drawing.Size(872, 87);
-            this.groupBox_searchCondition.TabIndex = 0;
+            this.groupBox_searchCondition.Size = new System.Drawing.Size(743, 72);
+            this.groupBox_searchCondition.TabIndex = 2;
             this.groupBox_searchCondition.TabStop = false;
             this.groupBox_searchCondition.Text = "查询条件";
             // 
@@ -114,12 +112,11 @@
             // 
             // DGVBookList
             // 
-            this.DGVBookList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DGVBookList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGVBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColCheck,
             this.Bid,
             this.Bname,
             this.Bwriter,
@@ -127,19 +124,16 @@
             this.Bsort,
             this.Bsum,
             this.Bremainder,
-            this.ColEdit,
-            this.ColDel});
-            this.DGVBookList.Location = new System.Drawing.Point(25, 126);
+            this.Bout,
+            this.Bback,
+            this.Rid,
+            this.outBook});
+            this.DGVBookList.Location = new System.Drawing.Point(1, 85);
             this.DGVBookList.Name = "DGVBookList";
             this.DGVBookList.RowTemplate.Height = 23;
-            this.DGVBookList.Size = new System.Drawing.Size(872, 303);
-            this.DGVBookList.TabIndex = 1;
+            this.DGVBookList.Size = new System.Drawing.Size(766, 274);
+            this.DGVBookList.TabIndex = 3;
             this.DGVBookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVBookList_CellContentClick);
-            // 
-            // ColCheck
-            // 
-            this.ColCheck.HeaderText = "选择";
-            this.ColCheck.Name = "ColCheck";
             // 
             // Bid
             // 
@@ -192,40 +186,44 @@
             this.Bremainder.Name = "Bremainder";
             this.Bremainder.ReadOnly = true;
             // 
-            // ColEdit
+            // Bout
             // 
-            dataGridViewCellStyle1.NullValue = "修改";
-            this.ColEdit.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColEdit.HeaderText = "修改";
-            this.ColEdit.Name = "ColEdit";
+            this.Bout.DataPropertyName = "Bout";
+            this.Bout.HeaderText = "借出日期";
+            this.Bout.Name = "Bout";
+            this.Bout.ReadOnly = true;
             // 
-            // ColDel
+            // Bback
             // 
-            dataGridViewCellStyle2.NullValue = "删除";
-            this.ColDel.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColDel.HeaderText = "删除";
-            this.ColDel.Name = "ColDel";
+            this.Bback.DataPropertyName = "Bback";
+            this.Bback.HeaderText = "归还日期";
+            this.Bback.Name = "Bback";
+            this.Bback.ReadOnly = true;
             // 
-            // btDelAll
+            // Rid
             // 
-            this.btDelAll.Location = new System.Drawing.Point(773, 33);
-            this.btDelAll.Name = "btDelAll";
-            this.btDelAll.Size = new System.Drawing.Size(75, 23);
-            this.btDelAll.TabIndex = 5;
-            this.btDelAll.Text = "批量删除";
-            this.btDelAll.UseVisualStyleBackColor = true;
-            this.btDelAll.Click += new System.EventHandler(this.btDelAll_Click);
+            this.Rid.DataPropertyName = "Rid";
+            this.Rid.HeaderText = "借阅读者";
+            this.Rid.Name = "Rid";
+            this.Rid.ReadOnly = true;
             // 
-            // BO_FormBooksList
+            // outBook
+            // 
+            dataGridViewCellStyle2.NullValue = "办理归还";
+            this.outBook.DefaultCellStyle = dataGridViewCellStyle2;
+            this.outBook.HeaderText = "办理归还";
+            this.outBook.Name = "outBook";
+            // 
+            // AD_FormbackBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(922, 438);
+            this.ClientSize = new System.Drawing.Size(767, 360);
             this.Controls.Add(this.DGVBookList);
             this.Controls.Add(this.groupBox_searchCondition);
-            this.Name = "BO_FormBooksList";
-            this.Text = "书籍列表";
-            this.Load += new System.EventHandler(this.FormBooksList_Load);
+            this.Name = "AD_FormbackBook";
+            this.Text = "还书";
+            this.Load += new System.EventHandler(this.AD_FormbackBook_Load);
             this.groupBox_searchCondition.ResumeLayout(false);
             this.groupBox_searchCondition.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVBookList)).EndInit();
@@ -242,7 +240,6 @@
         private System.Windows.Forms.ComboBox comboBox_searchWay;
         private System.Windows.Forms.Label label_Sway;
         private System.Windows.Forms.DataGridView DGVBookList;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;
@@ -250,8 +247,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsort;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bremainder;
-        private System.Windows.Forms.DataGridViewLinkColumn ColEdit;
-        private System.Windows.Forms.DataGridViewLinkColumn ColDel;
-        private System.Windows.Forms.Button btDelAll;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bout;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bback;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rid;
+        private System.Windows.Forms.DataGridViewLinkColumn outBook;
     }
 }

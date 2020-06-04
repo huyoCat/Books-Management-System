@@ -93,7 +93,8 @@ namespace Books_Management_System
                     //执行添加
                     string sqlAdd = "SET IDENTITY_INSERT BookInfo ON insert into BookInfo " +
                         "(Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder) values" +
-                        "(@Bid,@Bname,@Bwriter,@Bpublisher,@Bsort,@Bsum,@Bremainder) SET IDENTITY_INSERT BookInfo OFF";
+                        "(@Bid,@Bname,@Bwriter,@Bpublisher,@Bsort,@Bsum,@Bremainder) " +
+                        "SET IDENTITY_INSERT BookInfo OFF";
                     SqlParameter[] parametersAdd =
                     {
                         new SqlParameter("@Bid",Bid),

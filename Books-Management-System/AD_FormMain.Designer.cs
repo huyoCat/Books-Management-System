@@ -1,6 +1,6 @@
 ﻿namespace Books_Management_System
 {
-    partial class FormMain
+    partial class AD_FormMain
     {
         /// <summary>
         /// Required designer variable.
@@ -33,12 +33,15 @@
             this.BooksManage = new System.Windows.Forms.ToolStripMenuItem();
             this.AddBooks = new System.Windows.Forms.ToolStripMenuItem();
             this.BooksList = new System.Windows.Forms.ToolStripMenuItem();
+            this.LendBooksList = new System.Windows.Forms.ToolStripMenuItem();
             this.ReadersManage = new System.Windows.Forms.ToolStripMenuItem();
             this.AddReader = new System.Windows.Forms.ToolStripMenuItem();
             this.ReaderList = new System.Windows.Forms.ToolStripMenuItem();
+            this.办理借还书ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.outBook = new System.Windows.Forms.ToolStripMenuItem();
+            this.backBook = new System.Windows.Forms.ToolStripMenuItem();
             this.exitSystem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.LendBooksList = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +50,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.BooksManage,
             this.ReadersManage,
+            this.办理借还书ToolStripMenuItem,
             this.exitSystem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -68,16 +72,23 @@
             // AddBooks
             // 
             this.AddBooks.Name = "AddBooks";
-            this.AddBooks.Size = new System.Drawing.Size(180, 22);
+            this.AddBooks.Size = new System.Drawing.Size(148, 22);
             this.AddBooks.Text = "添加书籍";
             this.AddBooks.Click += new System.EventHandler(this.AddBooks_Click);
             // 
             // BooksList
             // 
             this.BooksList.Name = "BooksList";
-            this.BooksList.Size = new System.Drawing.Size(180, 22);
+            this.BooksList.Size = new System.Drawing.Size(148, 22);
             this.BooksList.Text = "书籍列表";
             this.BooksList.Click += new System.EventHandler(this.BooksList_Click);
+            // 
+            // LendBooksList
+            // 
+            this.LendBooksList.Name = "LendBooksList";
+            this.LendBooksList.Size = new System.Drawing.Size(148, 22);
+            this.LendBooksList.Text = "借出书籍列表";
+            this.LendBooksList.Click += new System.EventHandler(this.LendBooksList_Click);
             // 
             // ReadersManage
             // 
@@ -91,16 +102,39 @@
             // AddReader
             // 
             this.AddReader.Name = "AddReader";
-            this.AddReader.Size = new System.Drawing.Size(180, 22);
+            this.AddReader.Size = new System.Drawing.Size(124, 22);
             this.AddReader.Text = "添加读者";
             this.AddReader.Click += new System.EventHandler(this.AddReader_Click);
             // 
             // ReaderList
             // 
             this.ReaderList.Name = "ReaderList";
-            this.ReaderList.Size = new System.Drawing.Size(180, 22);
+            this.ReaderList.Size = new System.Drawing.Size(124, 22);
             this.ReaderList.Text = "读者列表";
             this.ReaderList.Click += new System.EventHandler(this.ReaderList_Click);
+            // 
+            // 办理借还书ToolStripMenuItem
+            // 
+            this.办理借还书ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.outBook,
+            this.backBook});
+            this.办理借还书ToolStripMenuItem.Name = "办理借还书ToolStripMenuItem";
+            this.办理借还书ToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
+            this.办理借还书ToolStripMenuItem.Text = "办理借还书";
+            // 
+            // outBook
+            // 
+            this.outBook.Name = "outBook";
+            this.outBook.Size = new System.Drawing.Size(180, 22);
+            this.outBook.Text = "借书";
+            this.outBook.Click += new System.EventHandler(this.outBook_Click);
+            // 
+            // backBook
+            // 
+            this.backBook.Name = "backBook";
+            this.backBook.Size = new System.Drawing.Size(180, 22);
+            this.backBook.Text = "还书";
+            this.backBook.Click += new System.EventHandler(this.backBook_Click);
             // 
             // exitSystem
             // 
@@ -114,14 +148,7 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // LendBooksList
-            // 
-            this.LendBooksList.Name = "LendBooksList";
-            this.LendBooksList.Size = new System.Drawing.Size(180, 22);
-            this.LendBooksList.Text = "借出书籍列表";
-            this.LendBooksList.Click += new System.EventHandler(this.LendBooksList_Click);
-            // 
-            // FormMain
+            // AD_FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,10 +156,10 @@
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormMain";
+            this.Name = "AD_FormMain";
             this.Text = "图书管理系统";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormMain_FormClosing);
-            this.Load += new System.EventHandler(this.FormMain_Load);
+            //this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -152,5 +179,8 @@
         private System.Windows.Forms.ToolStripMenuItem ReaderList;
         private System.Windows.Forms.ToolStripMenuItem exitSystem;
         private System.Windows.Forms.ToolStripMenuItem LendBooksList;
+        private System.Windows.Forms.ToolStripMenuItem 办理借还书ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem outBook;
+        private System.Windows.Forms.ToolStripMenuItem backBook;
     }
 }

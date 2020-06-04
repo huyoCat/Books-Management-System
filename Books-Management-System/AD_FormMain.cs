@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace Books_Management_System
 {
-    public partial class FormMain : Form
+    public partial class AD_FormMain : Form
     {
         
 
-        public FormMain()
+        public AD_FormMain()
         {
             InitializeComponent();
         }
@@ -31,18 +31,13 @@ namespace Books_Management_System
             formAddBooks.Show();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         //书籍列表
         private void BooksList_Click(object sender, EventArgs e)
         {
-            bool bl = CheckForm(typeof(BO_FormBooksList).Name);
+            bool bl = CheckForm(typeof(AD_FormBooksList).Name);
             if (!bl)
             {
-                BO_FormBooksList formBooksList = BO_FormBooksList.CreateInstance();
+                AD_FormBooksList formBooksList = AD_FormBooksList.CreateInstance();
                 formBooksList.MdiParent = this;
                 formBooksList.Show();
             }
@@ -118,6 +113,31 @@ namespace Books_Management_System
             Application.Exit();
         }
 
-        
+        /// <summary>
+        /// 办理借书
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void outBook_Click(object sender, EventArgs e)
+        {
+            bool bl = CheckForm(typeof(AD_FormoutBook).Name);
+            if (!bl)
+            {
+                AD_FormoutBook aD_FormoutBook = AD_FormoutBook.CreateInstance();
+                aD_FormoutBook.MdiParent = this;
+                aD_FormoutBook.Show();
+            }
+        }
+
+        private void backBook_Click(object sender, EventArgs e)
+        {
+            bool bl = CheckForm(typeof(AD_FormbackBook).Name);
+            if (!bl)
+            {
+                AD_FormbackBook aD_FormbackBook = AD_FormbackBook.CreateInstance();
+                aD_FormbackBook.MdiParent = this;
+                aD_FormbackBook.Show();
+            }
+        }
     }
 }

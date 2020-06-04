@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Books_Management_System
 {
-    public partial class BO_FormBooksList : Form
+    public partial class AD_FormBooksList : Form
     {
-        public BO_FormBooksList()
+        public AD_FormBooksList()
         {
             InitializeComponent();
         }
@@ -23,14 +23,14 @@ namespace Books_Management_System
         private Action reLoad = null;
 
         //单例实现
-        private static BO_FormBooksList formBooksList = null;
+        private static AD_FormBooksList formBooksList = null;
         private int count;
 
-        public static BO_FormBooksList CreateInstance()
+        public static AD_FormBooksList CreateInstance()
         {
             if (formBooksList == null || formBooksList.IsDisposed)
             {
-                formBooksList = new BO_FormBooksList();
+                formBooksList = new AD_FormBooksList();
             }
             return formBooksList;
         }
@@ -72,7 +72,7 @@ namespace Books_Management_System
 
             string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
                 "from BookInfo where IsDeleted=0";
-            sql += " where 1=1";
+            //sql += " where 1=1";
             if (SearchSID > 0)
             {
                 if (SearchSID == 1)
@@ -144,6 +144,7 @@ namespace Books_Management_System
             DataTable dataTableBookList = SqlHelper.GetDataTable(sql, parameters);
             DGVBookList.DataSource = dataTableBookList;
         }
+
         /// <summary>
         /// 修改或删除的实现
         /// </summary>

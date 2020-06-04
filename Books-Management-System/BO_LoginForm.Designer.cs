@@ -28,19 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loginForm));
             this.textBox_Num = new System.Windows.Forms.TextBox();
             this.textBox_password = new System.Windows.Forms.TextBox();
             this.label_ID = new System.Windows.Forms.Label();
             this.label_password = new System.Windows.Forms.Label();
             this.button_Login = new System.Windows.Forms.Button();
-            this.label_retrievePassword = new System.Windows.Forms.Label();
-            this.errorProvider_login = new System.Windows.Forms.ErrorProvider(this.components);
-            this.checkBox_reader = new System.Windows.Forms.CheckBox();
-            this.checkBox_Administrator = new System.Windows.Forms.CheckBox();
             this.button_Exit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_login)).BeginInit();
+            this.rbtReader = new System.Windows.Forms.RadioButton();
+            this.rbtAD = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // textBox_Num
@@ -49,7 +44,7 @@
             this.textBox_Num.Name = "textBox_Num";
             this.textBox_Num.Size = new System.Drawing.Size(144, 21);
             this.textBox_Num.TabIndex = 0;
-            this.textBox_Num.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            //this.textBox_Num.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox_password
             // 
@@ -78,7 +73,7 @@
             // 
             // button_Login
             // 
-            this.button_Login.Location = new System.Drawing.Point(111, 181);
+            this.button_Login.Location = new System.Drawing.Point(84, 181);
             this.button_Login.Name = "button_Login";
             this.button_Login.Size = new System.Drawing.Size(62, 23);
             this.button_Login.TabIndex = 5;
@@ -86,44 +81,9 @@
             this.button_Login.UseVisualStyleBackColor = true;
             this.button_Login.Click += new System.EventHandler(this.button_Login_Click);
             // 
-            // label_retrievePassword
-            // 
-            this.label_retrievePassword.AutoSize = true;
-            this.label_retrievePassword.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label_retrievePassword.Location = new System.Drawing.Point(270, 98);
-            this.label_retrievePassword.Name = "label_retrievePassword";
-            this.label_retrievePassword.Size = new System.Drawing.Size(65, 12);
-            this.label_retrievePassword.TabIndex = 6;
-            this.label_retrievePassword.Text = "忘记密码？";
-            // 
-            // errorProvider_login
-            // 
-            this.errorProvider_login.ContainerControl = this;
-            this.errorProvider_login.Icon = ((System.Drawing.Icon)(resources.GetObject("errorProvider_login.Icon")));
-            // 
-            // checkBox_reader
-            // 
-            this.checkBox_reader.AutoSize = true;
-            this.checkBox_reader.Location = new System.Drawing.Point(111, 148);
-            this.checkBox_reader.Name = "checkBox_reader";
-            this.checkBox_reader.Size = new System.Drawing.Size(48, 16);
-            this.checkBox_reader.TabIndex = 9;
-            this.checkBox_reader.Text = "读者";
-            this.checkBox_reader.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_Administrator
-            // 
-            this.checkBox_Administrator.AutoSize = true;
-            this.checkBox_Administrator.Location = new System.Drawing.Point(195, 148);
-            this.checkBox_Administrator.Name = "checkBox_Administrator";
-            this.checkBox_Administrator.Size = new System.Drawing.Size(60, 16);
-            this.checkBox_Administrator.TabIndex = 10;
-            this.checkBox_Administrator.Text = "管理员";
-            this.checkBox_Administrator.UseVisualStyleBackColor = true;
-            // 
             // button_Exit
             // 
-            this.button_Exit.Location = new System.Drawing.Point(193, 181);
+            this.button_Exit.Location = new System.Drawing.Point(221, 181);
             this.button_Exit.Name = "button_Exit";
             this.button_Exit.Size = new System.Drawing.Size(62, 23);
             this.button_Exit.TabIndex = 11;
@@ -131,15 +91,36 @@
             this.button_Exit.UseVisualStyleBackColor = true;
             this.button_Exit.Click += new System.EventHandler(this.button_Exit_Click);
             // 
+            // rbtReader
+            // 
+            this.rbtReader.AutoSize = true;
+            this.rbtReader.Location = new System.Drawing.Point(111, 146);
+            this.rbtReader.Name = "rbtReader";
+            this.rbtReader.Size = new System.Drawing.Size(47, 16);
+            this.rbtReader.TabIndex = 12;
+            this.rbtReader.TabStop = true;
+            this.rbtReader.Text = "读者";
+            this.rbtReader.UseVisualStyleBackColor = true;
+            // 
+            // rbtAD
+            // 
+            this.rbtAD.AutoSize = true;
+            this.rbtAD.Location = new System.Drawing.Point(196, 146);
+            this.rbtAD.Name = "rbtAD";
+            this.rbtAD.Size = new System.Drawing.Size(59, 16);
+            this.rbtAD.TabIndex = 13;
+            this.rbtAD.TabStop = true;
+            this.rbtAD.Text = "管理员";
+            this.rbtAD.UseVisualStyleBackColor = true;
+            // 
             // loginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(339, 224);
+            this.Controls.Add(this.rbtAD);
+            this.Controls.Add(this.rbtReader);
             this.Controls.Add(this.button_Exit);
-            this.Controls.Add(this.checkBox_Administrator);
-            this.Controls.Add(this.checkBox_reader);
-            this.Controls.Add(this.label_retrievePassword);
             this.Controls.Add(this.button_Login);
             this.Controls.Add(this.label_password);
             this.Controls.Add(this.label_ID);
@@ -150,7 +131,6 @@
             this.Name = "loginForm";
             this.Text = "WELCOME!";
             this.Load += new System.EventHandler(this.loginForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider_login)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,11 +143,9 @@
         private System.Windows.Forms.Label label_ID;
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Button button_Login;
-        private System.Windows.Forms.Label label_retrievePassword;
-        public System.Windows.Forms.ErrorProvider errorProvider_login;
-        private System.Windows.Forms.CheckBox checkBox_Administrator;
-        private System.Windows.Forms.CheckBox checkBox_reader;
         private System.Windows.Forms.Button button_Exit;
+        private System.Windows.Forms.RadioButton rbtAD;
+        private System.Windows.Forms.RadioButton rbtReader;
     }
 }
 

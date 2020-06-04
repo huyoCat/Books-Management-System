@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AD_FormAddOutBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormAddOutBook.Designer.cs">
+      <DependentUpon>AD_FormAddOutBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AD_FormbackBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormbackBook.Designer.cs">
+      <DependentUpon>AD_FormbackBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="AD_FormEditBookInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,24 +70,30 @@
     <Compile Include="AD_FormLendBook.Designer.cs">
       <DependentUpon>AD_FormLendBook.cs</DependentUpon>
     </Compile>
+    <Compile Include="AD_FormoutBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormoutBook.Designer.cs">
+      <DependentUpon>AD_FormoutBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="BO_FormAddReader.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BO_FormAddReader.Designer.cs">
       <DependentUpon>BO_FormAddReader.cs</DependentUpon>
     </Compile>
-    <Compile Include="BO_FormBooksList.cs">
+    <Compile Include="AD_FormBooksList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BO_FormBooksList.Designer.cs">
-      <DependentUpon>BO_FormBooksList.cs</DependentUpon>
+    <Compile Include="AD_FormBooksList.Designer.cs">
+      <DependentUpon>AD_FormBooksList.cs</DependentUpon>
     </Compile>
     <Compile Include="CBLendBookList.cs" />
-    <Compile Include="FormMain.cs">
+    <Compile Include="AD_FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMain.Designer.cs">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <Compile Include="AD_FormMain.Designer.cs">
+      <DependentUpon>AD_FormMain.cs</DependentUpon>
     </Compile>
     <Compile Include="AD_FormAddBooks.cs">
       <SubType>Form</SubType>
@@ -89,30 +107,51 @@
     <Compile Include="AD_FormReaderList.Designer.cs">
       <DependentUpon>AD_FormReaderList.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm.cs">
+    <Compile Include="BO_LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <Compile Include="BO_LoginForm.Designer.cs">
+      <DependentUpon>BO_LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RE_FormBookList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RE_FormBookList.Designer.cs">
+      <DependentUpon>RE_FormBookList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RE_FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RE_FormMain.Designer.cs">
+      <DependentUpon>RE_FormMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlHelper.cs" />
     <Compile Include="TagObject.cs" />
+    <EmbeddedResource Include="AD_FormAddOutBook.resx">
+      <DependentUpon>AD_FormAddOutBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AD_FormbackBook.resx">
+      <DependentUpon>AD_FormbackBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AD_FormEditBookInfo.resx">
       <DependentUpon>AD_FormEditBookInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AD_FormLendBook.resx">
       <DependentUpon>AD_FormLendBook.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AD_FormoutBook.resx">
+      <DependentUpon>AD_FormoutBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BO_FormAddReader.resx">
       <DependentUpon>BO_FormAddReader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BO_FormBooksList.resx">
-      <DependentUpon>BO_FormBooksList.cs</DependentUpon>
+    <EmbeddedResource Include="AD_FormBooksList.resx">
+      <DependentUpon>AD_FormBooksList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMain.resx">
-      <DependentUpon>FormMain.cs</DependentUpon>
+    <EmbeddedResource Include="AD_FormMain.resx">
+      <DependentUpon>AD_FormMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AD_FormAddBooks.resx">
       <DependentUpon>AD_FormAddBooks.cs</DependentUpon>
@@ -120,8 +159,8 @@
     <EmbeddedResource Include="AD_FormReaderList.resx">
       <DependentUpon>AD_FormReaderList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
-      <DependentUpon>LoginForm.cs</DependentUpon>
+    <EmbeddedResource Include="BO_LoginForm.resx">
+      <DependentUpon>BO_LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -132,6 +171,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="RE_FormBookList.resx">
+      <DependentUpon>RE_FormBookList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RE_FormMain.resx">
+      <DependentUpon>RE_FormMain.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

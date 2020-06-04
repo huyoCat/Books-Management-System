@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_DelAll = new System.Windows.Forms.Button();
             this.BT_searchLendBook = new System.Windows.Forms.Button();
             this.textBox_SearchLendBook = new System.Windows.Forms.TextBox();
             this.CBLendBookList = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DGVLendBookList = new System.Windows.Forms.DataGridView();
-            this.bt_DelAll = new System.Windows.Forms.Button();
-            this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Bid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +47,6 @@
             this.Bout = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bback = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColEdit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.ColDel = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVLendBookList)).BeginInit();
@@ -69,6 +66,16 @@
             this.groupBox1.Size = new System.Drawing.Size(917, 56);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // bt_DelAll
+            // 
+            this.bt_DelAll.Location = new System.Drawing.Point(753, 14);
+            this.bt_DelAll.Name = "bt_DelAll";
+            this.bt_DelAll.Size = new System.Drawing.Size(75, 23);
+            this.bt_DelAll.TabIndex = 4;
+            this.bt_DelAll.Text = "批量删除";
+            this.bt_DelAll.UseVisualStyleBackColor = true;
+            this.bt_DelAll.Click += new System.EventHandler(this.bt_DelAll_Click);
             // 
             // BT_searchLendBook
             // 
@@ -112,7 +119,6 @@
             this.DGVLendBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVLendBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVLendBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColCheck,
             this.Bid,
             this.Bname,
             this.Bwriter,
@@ -123,7 +129,6 @@
             this.Bout,
             this.Bback,
             this.Rid,
-            this.ColEdit,
             this.ColDel});
             this.DGVLendBookList.Location = new System.Drawing.Point(12, 74);
             this.DGVLendBookList.Name = "DGVLendBookList";
@@ -131,21 +136,6 @@
             this.DGVLendBookList.Size = new System.Drawing.Size(917, 327);
             this.DGVLendBookList.TabIndex = 2;
             this.DGVLendBookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVLendBookList_CellContentClick);
-            // 
-            // bt_DelAll
-            // 
-            this.bt_DelAll.Location = new System.Drawing.Point(753, 14);
-            this.bt_DelAll.Name = "bt_DelAll";
-            this.bt_DelAll.Size = new System.Drawing.Size(75, 23);
-            this.bt_DelAll.TabIndex = 4;
-            this.bt_DelAll.Text = "批量删除";
-            this.bt_DelAll.UseVisualStyleBackColor = true;
-            this.bt_DelAll.Click += new System.EventHandler(this.bt_DelAll_Click);
-            // 
-            // ColCheck
-            // 
-            this.ColCheck.HeaderText = "选择";
-            this.ColCheck.Name = "ColCheck";
             // 
             // Bid
             // 
@@ -217,19 +207,10 @@
             this.Rid.Name = "Rid";
             this.Rid.ReadOnly = true;
             // 
-            // ColEdit
-            // 
-            dataGridViewCellStyle1.NullValue = "修改";
-            this.ColEdit.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColEdit.HeaderText = "修改";
-            this.ColEdit.Name = "ColEdit";
-            this.ColEdit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColEdit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // ColDel
             // 
-            dataGridViewCellStyle2.NullValue = "删除";
-            this.ColDel.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.NullValue = "删除";
+            this.ColDel.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColDel.HeaderText = "删除";
             this.ColDel.Name = "ColDel";
             // 
@@ -260,7 +241,6 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridView DGVLendBookList;
         private System.Windows.Forms.Button bt_DelAll;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;
@@ -271,7 +251,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bout;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bback;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rid;
-        private System.Windows.Forms.DataGridViewLinkColumn ColEdit;
         private System.Windows.Forms.DataGridViewLinkColumn ColDel;
     }
 }
