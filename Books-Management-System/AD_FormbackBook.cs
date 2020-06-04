@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -44,13 +38,12 @@ namespace Books_Management_System
 
         private void InitSelect()
         {
-            string sql = "select SID,Sname from SelectList where SID<6";
+            string sql = "select SID,Sname from SelectList";
             DataTable dataTableSelectList = SqlHelper.GetDataTable(sql);
             DataRow dataRowSelectList = dataTableSelectList.NewRow();
             dataRowSelectList["SID"] = 0;
             dataRowSelectList["Sname"] = "请选择";
             dataTableSelectList.Rows.InsertAt(dataRowSelectList, 0);
-            //dataTableBookList.Rows.Add(dataRowBookList);添加至最后一个
 
             comboBox_searchWay.DataSource = dataTableSelectList;
             comboBox_searchWay.DisplayMember = "Sname";
@@ -59,12 +52,11 @@ namespace Books_Management_System
 
         private void InitAllBook()
         {
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid " +
                 "from LendBookInfo where IsDeleted=0";
             DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
             DGVBookList.DataSource = dataTableBookList;
         }
-
 
         /// <summary>
         /// 查询
@@ -77,7 +69,7 @@ namespace Books_Management_System
             int SearchSID = (int)comboBox_searchWay.SelectedValue;
             string keyWord = textBox_keyWord.Text.Trim();
 
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid " +
                 "from LendBookInfo where IsDeleted=0";
             //sql += " where 1=1";
             if (SearchSID > 0)
@@ -156,7 +148,7 @@ namespace Books_Management_System
         private Action reLaod = null;
 
         /// <summary>
-        /// 在出借列表删除，在书籍列表+1
+        /// 在出借列表删除，在书籍列表添加
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -176,38 +168,12 @@ namespace Books_Management_System
                     {
                         int Bid = (int)dataRow["Bid"];
                         int Rid = (int)dataRow["Rid"];
-                        string Bremainder = (string)dataRow["Bremainder"];
-                        //string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder+1 " +
-                        //    "from BookInfo where Bid=@Bid";
-                        //SqlParameter paraID = new SqlParameter("@Bid", Bid);
-                        //SqlDataReader dataReader = SqlHelper.ExecuteReader(sql, paraID);
-                        ////读取数据
-                        //if (dataReader.Read())
-                        //{
-                        //    int BookId = int.Parse(dataReader["Bid"].ToString());
-                        //    //string Bname = dataReader["Bname"].ToString();
-                        //    //string Bwriter = dataReader["Bwriter"].ToString();
-                        //    //string Bpublisher = dataReader["Bpublisher"].ToString();
-                        //    //string Bsort = dataReader["Bsort"].ToString();
-                        //    //string Bsum = dataReader["Bsum"].ToString();
-                        //    //string Bremainder = dataReader["Bremainder"].ToString();
-                        //}
-                        //dataReader.Close();
 
-                        //在馆数量+1
-                        string sqlBookList = " update BookInfo set Bremainder=@Bremainder+1 where Bid=@Bid";
+                        //修改为可见
+                        string sqlBookList = " update BookInfo set IsDeleted=0 where Bid=@Bid";
                         SqlParameter[] parameters1 =
                         {
-                            new SqlParameter("@Bid",Bid),
-                            //new SqlParameter("@Bname",Bname),
-                            //new SqlParameter("@Bwriter",Bwriter),
-                            //new SqlParameter("@Bpublisher",Bpublisher),
-                            //new SqlParameter("@Bsort",Bsort),
-                            //new SqlParameter("@Bsum",Bsum),
-                            new SqlParameter("@Bremainder",Bremainder)
-                            //new SqlParameter("@Bout",Bout),
-                            //new SqlParameter("@Bback",Bback),
-                            //new SqlParameter("@Rid",Rid)
+                            new SqlParameter("@Bid",Bid)
                         };
                         int count1 = SqlHelper.ExecuteNonQuery(sqlBookList, parameters1);
 
@@ -216,14 +182,6 @@ namespace Books_Management_System
                         SqlParameter[] parameters2 =
                         {
                             new SqlParameter("@Bid",Bid),
-                            //new SqlParameter("@Bname",Bname),
-                            //new SqlParameter("@Bwriter",Bwriter),
-                            //new SqlParameter("@Bpublisher",Bpublisher),
-                            //new SqlParameter("@Bsort",Bsort),
-                            //new SqlParameter("@Bsum",Bsum),
-                            //new SqlParameter("@Bremainder",Bremainder),
-                            //new SqlParameter("@Bout",Bout),
-                            //new SqlParameter("@Bback",Bback),
                             new SqlParameter("@Rid",Rid)
                         };
                         int count2 = SqlHelper.ExecuteNonQuery(sqlLendBookList, parameters2);
@@ -234,25 +192,13 @@ namespace Books_Management_System
                             MessageBox.Show("数据库信息修改失败！");
                         }
 
-                        string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
+                        string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid " +
                         "from LendBookInfo where IsDeleted=0";
                         DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
                         DGVBookList.DataSource = dataTableBookList;
-
-                        ////利用委托跨页面刷新
-                        //reLoad = LoadAllBookList;
-                        //reLaod.Invoke();
                     }
                 }
             }
         }
-
-        //private void LoadAllBookList()
-        //{
-        //    string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
-        //                "from LendBookInfo where IsDeleted=0";
-        //    DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
-        //    DGVBookList.DataSource = dataTableBookList;
-        //}
     }
 }

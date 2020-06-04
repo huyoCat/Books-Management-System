@@ -1,29 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
 {
     public partial class AD_FormMain : Form
     {
-        
-
         public AD_FormMain()
         {
             InitializeComponent();
         }
-        private void BooksManage_Click(object sender, EventArgs e)
-        {
-            
-        }
 
-        //添加书籍
+        /// <summary>
+        /// 添加书籍
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddBooks_Click(object sender, EventArgs e)
         {
             AD_FormAddBooks formAddBooks = new AD_FormAddBooks();
@@ -31,7 +22,11 @@ namespace Books_Management_System
             formAddBooks.Show();
         }
 
-        //书籍列表
+        /// <summary>
+        /// 书籍列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BooksList_Click(object sender, EventArgs e)
         {
             bool bl = CheckForm(typeof(AD_FormBooksList).Name);
@@ -43,7 +38,11 @@ namespace Books_Management_System
             }
         }
 
-        //借出书籍列表
+        /// <summary>
+        /// 借出书籍列表
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LendBooksList_Click(object sender, EventArgs e)
         {
             bool bl = CheckForm(typeof(AD_FormLendBook).Name);
@@ -93,8 +92,6 @@ namespace Books_Management_System
         }
 
         //退出程序
-        
-
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("您确定要退出系统吗？", "退出提示",
@@ -128,7 +125,11 @@ namespace Books_Management_System
                 aD_FormoutBook.Show();
             }
         }
-
+        /// <summary>
+        /// 还书
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void backBook_Click(object sender, EventArgs e)
         {
             bool bl = CheckForm(typeof(AD_FormbackBook).Name);
@@ -137,6 +138,24 @@ namespace Books_Management_System
                 AD_FormbackBook aD_FormbackBook = AD_FormbackBook.CreateInstance();
                 aD_FormbackBook.MdiParent = this;
                 aD_FormbackBook.Show();
+            }
+        }
+
+        private void AddAD_Click(object sender, EventArgs e)
+        {
+            AD_FormAddAD formAddReader = new AD_FormAddAD();
+            formAddReader.MdiParent = this;
+            formAddReader.Show();
+        }
+
+        private void ADList_Click(object sender, EventArgs e)
+        {
+            bool bl = CheckForm(typeof(AD_FormAdministratorInfoList).Name);
+            if (!bl)
+            {
+                AD_FormAdministratorInfoList formReaderList = new AD_FormAdministratorInfoList();
+                formReaderList.MdiParent = this;
+                formReaderList.Show();
             }
         }
     }

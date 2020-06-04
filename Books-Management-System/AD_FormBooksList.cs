@@ -1,13 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Management.Instrumentation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -49,7 +43,6 @@ namespace Books_Management_System
             dataRowSelectList["SID"] = 0;
             dataRowSelectList["Sname"] = "请选择";
             dataTableSelectList.Rows.InsertAt(dataRowSelectList, 0);
-            //dataTableBookList.Rows.Add(dataRowBookList);添加至最后一个
 
             comboBox_searchWay.DataSource = dataTableSelectList;
             comboBox_searchWay.DisplayMember = "Sname";
@@ -58,7 +51,7 @@ namespace Books_Management_System
 
         private void InitAllBook()
         {
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort " +
                 "from BookInfo where IsDeleted=0";
             DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
             DGVBookList.DataSource = dataTableBookList;
@@ -70,7 +63,7 @@ namespace Books_Management_System
             int SearchSID = (int)comboBox_searchWay.SelectedValue;
             string keyWord = textBox_keyWord.Text.Trim();
 
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort " +
                 "from BookInfo where IsDeleted=0";
             //sql += " where 1=1";
             if (SearchSID > 0)
@@ -212,7 +205,7 @@ namespace Books_Management_System
 
         private void LoadAllBookList()
         {
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort " +
                         "from BookInfo where IsDeleted=0";
             DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
             DGVBookList.DataSource = dataTableBookList;
@@ -284,23 +277,10 @@ namespace Books_Management_System
                     {
                         MessageBox.Show("书籍信息删除成功！", "删除书籍提示",
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //手动刷新
-                        //DGVBookList.DataSource = null;
-
-                        //DataTable dtBook = (DataTable)DGVBookList.DataSource;
-                        //string idStr = string.Join("，",listId);
-                        //DataRow[] rows = dtBook.Select("Bid in (" + idStr + ")");
-                        //for(int i = 0; i < rows.Length; i++)
-                        {
-                            //dtBook.Rows.Remove(rows[i]);
-                        }
-                        //foreach(DataRow dataRow in rows)
-                        //{
-                        //    dtBook.Rows.Remove(dataRow);
-                        //}
-                        //DGVBookList.DataSource = dtBook;
                     }
-                    string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
+
+                    //刷新数据列表
+                    string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort " +
                         "from BookInfo where IsDeleted=0";
                     DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
                     DGVBookList.DataSource = dataTableBookList;

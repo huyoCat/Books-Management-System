@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -41,14 +34,6 @@ namespace Books_Management_System
             if (string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("请输入密码", "登录提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBox_password.Focus();
-                return;
-            }
-
-
-            if (string.IsNullOrEmpty(iden))
-            {
-                MessageBox.Show("请选择登录信息", "登录提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 textBox_password.Focus();
                 return;
             }
@@ -94,37 +79,14 @@ namespace Books_Management_System
                 //读者登录
                 else
                 {
-                    //查询语句
-                    //这种方法容易被SQL注入
-                    //string sql = "select count(1) from ReaderInfo where Rno='"+readerNo+"'and Rpassword='"+readerPassword+"'";
                     string sql = "select count(1) from ReaderInfo where Rid=@Rid and Rpassword=@Rpassword";
 
                     //添加参数
-                    // SqlParameter parameterRno = new SqlParameter("@Rno", readerNo);
-                    // SqlParameter parameterRpassword = new SqlParameter("@Rpassword", readerPassword);
-                    //或者使用数组添加参数
                     SqlParameter[] parameters =
                     {
                         new SqlParameter("@Rid", id),
                         new SqlParameter("@Rpassword", password)
                     };
-
-                    //创建command对象
-                    //SqlCommand command = new SqlCommand(sql, connection);
-                    //command.CommandType = CommandType.StoredProcedure;存储过程
-                    //command.Parameters.Clear();
-                    //command.Parameters.Add(parameterRno);
-                    //command.Parameters.Add(parameterRpassword);
-                    //command.Parameters.AddRange(parameters);
-
-                    //打开连接
-                    //connection.Open();
-
-                    //执行命令
-                    //object o = command.ExecuteScalar();//执行查询，返回结果集第一行第一列的值，忽略其他行或列
-
-                    //关闭连接
-                    //connection.Close();
 
                     object o = SqlHelper.ExecuteScalar(sql, parameters);
 

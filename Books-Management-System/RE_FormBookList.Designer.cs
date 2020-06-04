@@ -40,8 +40,6 @@
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bpublisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bsum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bremainder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox_searchCondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVBookList)).BeginInit();
             this.SuspendLayout();
@@ -117,9 +115,7 @@
             this.Bname,
             this.Bwriter,
             this.Bpublisher,
-            this.Bsort,
-            this.Bsum,
-            this.Bremainder});
+            this.Bsort});
             this.DGVBookList.Location = new System.Drawing.Point(6, 102);
             this.DGVBookList.Name = "DGVBookList";
             this.DGVBookList.RowTemplate.Height = 23;
@@ -163,20 +159,6 @@
             this.Bsort.Name = "Bsort";
             this.Bsort.ReadOnly = true;
             // 
-            // Bsum
-            // 
-            this.Bsum.DataPropertyName = "Bsum";
-            this.Bsum.HeaderText = "总数";
-            this.Bsum.Name = "Bsum";
-            this.Bsum.ReadOnly = true;
-            // 
-            // Bremainder
-            // 
-            this.Bremainder.DataPropertyName = "Bremainder";
-            this.Bremainder.HeaderText = "在馆数量";
-            this.Bremainder.Name = "Bremainder";
-            this.Bremainder.ReadOnly = true;
-            // 
             // RE_FormBookList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -208,7 +190,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bpublisher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bsum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bremainder;
     }
 }

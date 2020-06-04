@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_searchCondition = new System.Windows.Forms.GroupBox();
             this.button_search = new System.Windows.Forms.Button();
             this.label_keyWord = new System.Windows.Forms.Label();
@@ -41,8 +41,6 @@
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bpublisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bsum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bremainder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bout = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bback = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Rid = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,8 +120,6 @@
             this.Bwriter,
             this.Bpublisher,
             this.Bsort,
-            this.Bsum,
-            this.Bremainder,
             this.Bout,
             this.Bback,
             this.Rid,
@@ -172,20 +168,6 @@
             this.Bsort.Name = "Bsort";
             this.Bsort.ReadOnly = true;
             // 
-            // Bsum
-            // 
-            this.Bsum.DataPropertyName = "Bsum";
-            this.Bsum.HeaderText = "总数";
-            this.Bsum.Name = "Bsum";
-            this.Bsum.ReadOnly = true;
-            // 
-            // Bremainder
-            // 
-            this.Bremainder.DataPropertyName = "Bremainder";
-            this.Bremainder.HeaderText = "在馆数量";
-            this.Bremainder.Name = "Bremainder";
-            this.Bremainder.ReadOnly = true;
-            // 
             // Bout
             // 
             this.Bout.DataPropertyName = "Bout";
@@ -209,8 +191,8 @@
             // 
             // outBook
             // 
-            dataGridViewCellStyle2.NullValue = "办理归还";
-            this.outBook.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.NullValue = "办理归还";
+            this.outBook.DefaultCellStyle = dataGridViewCellStyle1;
             this.outBook.HeaderText = "办理归还";
             this.outBook.Name = "outBook";
             // 
@@ -245,8 +227,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bpublisher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bsum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bremainder;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bout;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bback;
         private System.Windows.Forms.DataGridViewTextBoxColumn Rid;

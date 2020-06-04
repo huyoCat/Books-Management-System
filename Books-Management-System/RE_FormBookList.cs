@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -45,7 +39,6 @@ namespace Books_Management_System
             dataRowSelectList["SID"] = 0;
             dataRowSelectList["Sname"] = "请选择";
             dataTableSelectList.Rows.InsertAt(dataRowSelectList, 0);
-            //dataTableBookList.Rows.Add(dataRowBookList);添加至最后一个
 
             comboBox_searchWay.DataSource = dataTableSelectList;
             comboBox_searchWay.DisplayMember = "Sname";
@@ -54,7 +47,7 @@ namespace Books_Management_System
 
         private void InitAllBook()
         {
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort " +
                 "from BookInfo where IsDeleted=0";
             DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
             DGVBookList.DataSource = dataTableBookList;
@@ -72,7 +65,7 @@ namespace Books_Management_System
             int SearchSID = (int)comboBox_searchWay.SelectedValue;
             string keyWord = textBox_keyWord.Text.Trim();
 
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort " +
                 "from BookInfo where IsDeleted=0";
             //sql += " where 1=1";
             if (SearchSID > 0)

@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -20,12 +14,6 @@ namespace Books_Management_System
 
         private int Bid = 0;
         private Action reLaod = null;
-        //public int pubBid = 0;//公有变量
-        //public AD_FormEditBookInfo(int _Bid)
-        //{
-        //    InitializeComponent();
-        //    Bid = _Bid;
-        //}
 
         private void AD_FormEditBookInfo_Load(object sender, EventArgs e)
         {
@@ -38,18 +26,9 @@ namespace Books_Management_System
         {
             string sql = "select BSortId,BSortName from BookSortList";
             DataTable dataTableSelectList = SqlHelper.GetDataTable(sql);
-            //DataRow dataRowSelectList = dataTableSelectList.NewRow();
             cbEdit_Bsort.DataSource = dataTableSelectList;
             cbEdit_Bsort.DisplayMember = "BSortName";
             cbEdit_Bsort.ValueMember = "BSortId";
-            //dataRowSelectList["SID"] = 0;
-            //dataRowSelectList["Sname"] = "请选择";
-            //dataTableSelectList.Rows.InsertAt(dataRowSelectList, 0);
-            //dataTableBookList.Rows.Add(dataRowBookList);添加至最后一个
-
-            //comboBox_searchWay.DataSource = dataTableSelectList;
-            //comboBox_searchWay.DisplayMember = "Sname";
-            //comboBox_searchWay.ValueMember = "SID";
         }
 
         private void InitBookInfo()
@@ -63,18 +42,16 @@ namespace Books_Management_System
                 reLaod = tagObject.ReLoad;//赋值
             }
             //查询
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum from BookInfo where Bid=@Bid";
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort from BookInfo where Bid=@Bid";
             SqlParameter paraID = new SqlParameter("@Bid", Bid);
             SqlDataReader dataReader = SqlHelper.ExecuteReader(sql, paraID);
             //读取数据
             if (dataReader.Read())
             {
-                tbEdit_Bid.Text = dataReader["Bid"].ToString();
                 tbEdit_Bname.Text = dataReader["Bname"].ToString();
                 tbEdit_Bwriter.Text = dataReader["Bwriter"].ToString();
                 tbEdit_Bpublisher.Text = dataReader["Bpublisher"].ToString();
                 cbEdit_Bsort.SelectedItem = dataReader["Bsort"].ToString();
-                tbEdit_Bsum.Text = dataReader["Bsum"].ToString();
             }
             dataReader.Close();
         }
@@ -82,44 +59,31 @@ namespace Books_Management_System
         private void btEdit_book_Click(object sender, EventArgs e)
         {
             //获取页面信息
-            int Bid = int.Parse(tbEdit_Bid.Text);
             string Bname = tbEdit_Bname.Text.Trim();
             string Bwriter = tbEdit_Bwriter.Text.Trim();
             string Bpublisher = tbEdit_Bpublisher.Text.Trim();
             int BookSort = (int)cbEdit_Bsort.SelectedValue;
-            string Bsum = tbEdit_Bsum.Text.Trim();
-            //这里要做一个借出然后减掉
-            string Bremainder = Bsum;
 
             //判空处理
             {
-                if (Bid == 0)
-                {
-                    MessageBox.Show("请输入书号！", "修改书号提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
                 if (string.IsNullOrEmpty(Bname))
                 {
-                    MessageBox.Show("请输入书名！", "修改书名提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("请输入书名！", "修改书名提示", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Bwriter))
                 {
-                    MessageBox.Show("请输入作者！", "修改作者提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("请输入作者！", "修改作者提示", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Bpublisher))
                 {
-                    MessageBox.Show("请输入出版社！", "修改出版社提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(Bsum))
-                {
-                    MessageBox.Show("请输入书目馆藏数量！", "修改书目馆藏数量提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("请输入出版社！", "修改出版社提示", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
@@ -133,9 +97,7 @@ namespace Books_Management_System
                     new SqlParameter("@Bname",Bname),
                     new SqlParameter("@Bwriter",Bwriter),
                     new SqlParameter("@Bpublisher",Bpublisher),
-                    new SqlParameter("@Bsort",BookSort),
-                    new SqlParameter("@Bsum",Bsum),
-                    new SqlParameter("@Bremainder",Bremainder)
+                    new SqlParameter("@Bsort",BookSort)
                 };
                 object oCount = SqlHelper.ExecuteScalar(sqlExists, parameters);
                 if (oCount == null || oCount == DBNull.Value || ((int)oCount) == 0)
@@ -143,17 +105,15 @@ namespace Books_Management_System
                     string Bsort = getSort(BookSort);
                     //执行添加
                     string sqlEdit = " update BookInfo set " +
-                        "Bname=@Bname,Bwriter=@Bwriter,Bpublisher=@Bpublisher,Bsort=@Bsort," +
-                        "Bsum=@Bsum where Bid=@Bid ";
+                        "Bname=@Bname,Bwriter=@Bwriter,Bpublisher=@Bpublisher,Bsort=@Bsort" +
+                        " where Bid=@Bid ";
                     SqlParameter[] parametersEdit =
                     {
                         new SqlParameter("@Bid",Bid),
                         new SqlParameter("@Bname",Bname),
                         new SqlParameter("@Bwriter",Bwriter),
                         new SqlParameter("@Bpublisher",Bpublisher),
-                        new SqlParameter("@Bsort",Bsort),
-                        new SqlParameter("@Bsum",Bsum),
-                        new SqlParameter("@Bremainder",Bremainder)
+                        new SqlParameter("@Bsort",Bsort)
                     };
 
                     //执行并返回
@@ -168,13 +128,15 @@ namespace Books_Management_System
                     }
                     else
                     {
-                        MessageBox.Show("修改书籍信息失败！", "修改书籍信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("修改书籍信息失败！", "修改书籍信息提示", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("书籍已存在！", "修改书籍信息提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("书籍已存在！", "修改书籍信息提示", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }

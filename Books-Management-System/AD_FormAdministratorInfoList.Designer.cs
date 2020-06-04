@@ -1,6 +1,6 @@
 ﻿namespace Books_Management_System
 {
-    partial class AD_FormReaderList
+    partial class AD_FormAdministratorInfoList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,31 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DGVReaderList = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btReaderSearch = new System.Windows.Forms.Button();
             this.textBReaderSearch = new System.Windows.Forms.TextBox();
-            this.Rid = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rpassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVReaderList)).BeginInit();
+            this.DGVReaderList = new System.Windows.Forms.DataGridView();
+            this.Aid = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apassword = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVReaderList)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DGVReaderList
-            // 
-            this.DGVReaderList.AllowUserToAddRows = false;
-            this.DGVReaderList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGVReaderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVReaderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Rid,
-            this.Rpassword});
-            this.DGVReaderList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.DGVReaderList.Location = new System.Drawing.Point(0, 81);
-            this.DGVReaderList.Name = "DGVReaderList";
-            this.DGVReaderList.RowTemplate.Height = 23;
-            this.DGVReaderList.Size = new System.Drawing.Size(418, 334);
-            this.DGVReaderList.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -63,11 +48,20 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btReaderSearch);
             this.groupBox1.Controls.Add(this.textBReaderSearch);
-            this.groupBox1.Location = new System.Drawing.Point(0, 12);
+            this.groupBox1.Location = new System.Drawing.Point(0, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(418, 63);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.Size = new System.Drawing.Size(377, 63);
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 12);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "请输入管理员号：";
             // 
             // btReaderSearch
             // 
@@ -86,44 +80,50 @@
             this.textBReaderSearch.Size = new System.Drawing.Size(123, 21);
             this.textBReaderSearch.TabIndex = 2;
             // 
-            // Rid
+            // DGVReaderList
             // 
-            this.Rid.DataPropertyName = "Rid";
-            this.Rid.HeaderText = "读者号";
-            this.Rid.Name = "Rid";
-            this.Rid.ReadOnly = true;
+            this.DGVReaderList.AllowUserToAddRows = false;
+            this.DGVReaderList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVReaderList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVReaderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGVReaderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Aid,
+            this.Apassword});
+            this.DGVReaderList.Location = new System.Drawing.Point(0, 75);
+            this.DGVReaderList.Name = "DGVReaderList";
+            this.DGVReaderList.RowTemplate.Height = 23;
+            this.DGVReaderList.Size = new System.Drawing.Size(377, 375);
+            this.DGVReaderList.TabIndex = 2;
             // 
-            // Rpassword
+            // Aid
             // 
-            this.Rpassword.DataPropertyName = "Rpassword";
-            this.Rpassword.HeaderText = "密码";
-            this.Rpassword.Name = "Rpassword";
-            this.Rpassword.ReadOnly = true;
+            this.Aid.DataPropertyName = "Aid";
+            this.Aid.HeaderText = "管理员号";
+            this.Aid.Name = "Aid";
+            this.Aid.ReadOnly = true;
             // 
-            // label1
+            // Apassword
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 12);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "请输入读者号：";
+            this.Apassword.DataPropertyName = "Apassword";
+            this.Apassword.HeaderText = "密码";
+            this.Apassword.Name = "Apassword";
+            this.Apassword.ReadOnly = true;
             // 
-            // AD_FormReaderList
+            // AD_FormAdministratorInfoList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 415);
+            this.ClientSize = new System.Drawing.Size(384, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.DGVReaderList);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MinimizeBox = false;
-            this.Name = "AD_FormReaderList";
-            this.Text = "读者列表";
-            this.Load += new System.EventHandler(this.FormReaderList_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVReaderList)).EndInit();
+            this.Name = "AD_FormAdministratorInfoList";
+            this.Text = "管理员列表";
+            this.Load += new System.EventHandler(this.AD_FormAdministratorInfoList_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVReaderList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,12 +131,12 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView DGVReaderList;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btReaderSearch;
         private System.Windows.Forms.TextBox textBReaderSearch;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Rpassword;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView DGVReaderList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Aid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apassword;
     }
 }

@@ -44,8 +44,6 @@
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bpublisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bsum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bremainder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEdit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.ColDel = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox_searchCondition.SuspendLayout();
@@ -136,8 +134,6 @@
             this.Bwriter,
             this.Bpublisher,
             this.Bsort,
-            this.Bsum,
-            this.Bremainder,
             this.ColEdit,
             this.ColDel});
             this.DGVBookList.Location = new System.Drawing.Point(25, 126);
@@ -189,20 +185,6 @@
             this.Bsort.Name = "Bsort";
             this.Bsort.ReadOnly = true;
             // 
-            // Bsum
-            // 
-            this.Bsum.DataPropertyName = "Bsum";
-            this.Bsum.HeaderText = "总数";
-            this.Bsum.Name = "Bsum";
-            this.Bsum.ReadOnly = true;
-            // 
-            // Bremainder
-            // 
-            this.Bremainder.DataPropertyName = "Bremainder";
-            this.Bremainder.HeaderText = "在馆数量";
-            this.Bremainder.Name = "Bremainder";
-            this.Bremainder.ReadOnly = true;
-            // 
             // ColEdit
             // 
             dataGridViewCellStyle1.NullValue = "修改";
@@ -243,16 +225,14 @@
         private System.Windows.Forms.ComboBox comboBox_searchWay;
         private System.Windows.Forms.Label label_Sway;
         private System.Windows.Forms.DataGridView DGVBookList;
+        private System.Windows.Forms.Button btDelAll;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bpublisher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bsum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bremainder;
         private System.Windows.Forms.DataGridViewLinkColumn ColEdit;
         private System.Windows.Forms.DataGridViewLinkColumn ColDel;
-        private System.Windows.Forms.Button btDelAll;
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_searchCondition = new System.Windows.Forms.GroupBox();
             this.button_search = new System.Windows.Forms.Button();
             this.label_keyWord = new System.Windows.Forms.Label();
@@ -41,8 +41,6 @@
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bpublisher = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bsum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bremainder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.outBook = new System.Windows.Forms.DataGridViewLinkColumn();
             this.groupBox_searchCondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVBookList)).BeginInit();
@@ -97,7 +95,6 @@
             this.comboBox_searchWay.Name = "comboBox_searchWay";
             this.comboBox_searchWay.Size = new System.Drawing.Size(121, 20);
             this.comboBox_searchWay.TabIndex = 1;
-            this.comboBox_searchWay.SelectedIndexChanged += new System.EventHandler(this.comboBox_searchWay_SelectedIndexChanged);
             // 
             // label_Sway
             // 
@@ -120,8 +117,6 @@
             this.Bwriter,
             this.Bpublisher,
             this.Bsort,
-            this.Bsum,
-            this.Bremainder,
             this.outBook});
             this.DGVBookList.Location = new System.Drawing.Point(1, 101);
             this.DGVBookList.Name = "DGVBookList";
@@ -167,24 +162,10 @@
             this.Bsort.Name = "Bsort";
             this.Bsort.ReadOnly = true;
             // 
-            // Bsum
-            // 
-            this.Bsum.DataPropertyName = "Bsum";
-            this.Bsum.HeaderText = "总数";
-            this.Bsum.Name = "Bsum";
-            this.Bsum.ReadOnly = true;
-            // 
-            // Bremainder
-            // 
-            this.Bremainder.DataPropertyName = "Bremainder";
-            this.Bremainder.HeaderText = "在馆数量";
-            this.Bremainder.Name = "Bremainder";
-            this.Bremainder.ReadOnly = true;
-            // 
             // outBook
             // 
-            dataGridViewCellStyle3.NullValue = "办理借阅";
-            this.outBook.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.NullValue = "办理借阅";
+            this.outBook.DefaultCellStyle = dataGridViewCellStyle1;
             this.outBook.HeaderText = "办理借阅";
             this.outBook.Name = "outBook";
             // 
@@ -219,8 +200,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bpublisher;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsort;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bsum;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bremainder;
         private System.Windows.Forms.DataGridViewLinkColumn outBook;
     }
 }

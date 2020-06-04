@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -32,7 +27,6 @@ namespace Books_Management_System
             dataRowSelectList["SID"] = 0;
             dataRowSelectList["Sname"] = "请选择";
             dataTableSelectList.Rows.InsertAt(dataRowSelectList, 0);
-            //dataTableBookList.Rows.Add(dataRowBookList);添加至最后一个
 
             CBLendBookList.DataSource = dataTableSelectList;
             CBLendBookList.DisplayMember = "Sname";
@@ -41,7 +35,7 @@ namespace Books_Management_System
 
         private void InitAllLendBook()
         {
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid " +
                 "from LendBookInfo";
             DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
             DGVLendBookList.DataSource = dataTableBookList;
@@ -67,77 +61,40 @@ namespace Books_Management_System
             int SearchSID = (int)CBLendBookList.SelectedValue;
             string keyWord = textBox_SearchLendBook.Text.Trim();
 
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid " +
                 "from LendBookInfo";
             sql += " where 1=1";
+
+            //改 switch
             if (SearchSID > 0)
             {
+                if (string.IsNullOrEmpty(keyWord))
+                {
+                    MessageBox.Show("请输入关键字！");
+                }
                 if (SearchSID == 1)
                 {
-                    if (string.IsNullOrEmpty(keyWord))
-                    {
-                        MessageBox.Show("请输入关键字！");
-                    }
-                    else
-                    {
-                        sql += "and Bid like @Bid";
-                    }
-
+                    sql += "and Bid like @Bid";
                 }
                 if (SearchSID == 2)
                 {
-                    if (string.IsNullOrEmpty(keyWord))
-                    {
-                        MessageBox.Show("请输入关键字！");
-                    }
-                    else
-                    {
-                        sql += "and Bname like @Bname";
-                    }
+                    sql += "and Bname like @Bname";
                 }
                 if (SearchSID == 3)
                 {
-                    if (string.IsNullOrEmpty(keyWord))
-                    {
-                        MessageBox.Show("请输入关键字！");
-                    }
-                    else
-                    {
-                        sql += "and Bwriter like @Bwriter";
-                    }
+                    sql += "and Bwriter like @Bwriter";
                 }
                 if (SearchSID == 4)
                 {
-                    if (string.IsNullOrEmpty(keyWord))
-                    {
-                        MessageBox.Show("请输入关键字！");
-                    }
-                    else
-                    {
-                        sql += "and Bpublisher like @Bpublisher";
-                    }
+                    sql += "and Bpublisher like @Bpublisher";
                 }
                 if (SearchSID == 5)
                 {
-                    if (string.IsNullOrEmpty(keyWord))
-                    {
-                        MessageBox.Show("请输入关键字！");
-                    }
-                    else
-                    {
-                        sql += "and Bsort like @Bsort";
-                    }
+                    sql += "and Bsort like @Bsort";
                 }
                 if (SearchSID == 6)
                 {
-                    if (string.IsNullOrEmpty(keyWord))
-                    {
-                        MessageBox.Show("请输入关键字！");
-                    }
-                    else
-                    {
-                        sql += "and Rid like @Rid";
-                    }
+                    sql += "and Rid like @Rid";
                 }
             }
             SqlParameter[] parameters =
@@ -156,7 +113,7 @@ namespace Books_Management_System
         }
 
         /// <summary>
-        /// 修改或删除的实现
+        /// 删除的实现
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -167,11 +124,6 @@ namespace Books_Management_System
                 //获取当前单元格
                 DataGridViewCell dataGridViewCell = DGVLendBookList.Rows[e.RowIndex].Cells[e.ColumnIndex];
                 if (dataGridViewCell is DataGridViewLinkCell &&
-                    dataGridViewCell.FormattedValue.ToString() == "修改")
-                {
-                    //修改操作
-                }
-                else if (dataGridViewCell is DataGridViewLinkCell &&
                     dataGridViewCell.FormattedValue.ToString() == "删除")
                 {
                     //删除操作
@@ -274,7 +226,7 @@ namespace Books_Management_System
                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     //手动刷新
-                    string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid " +
+                    string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid " +
                         "from LendBookInfo where IsDeleted=0";
                     DataTable dataTableBookList = SqlHelper.GetDataTable(sql);
                     DGVLendBookList.DataSource = dataTableBookList;

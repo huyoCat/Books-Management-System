@@ -46,11 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AD_FormAddAD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormAddAD.Designer.cs">
+      <DependentUpon>AD_FormAddAD.cs</DependentUpon>
+    </Compile>
     <Compile Include="AD_FormAddOutBook.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AD_FormAddOutBook.Designer.cs">
       <DependentUpon>AD_FormAddOutBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AD_FormAdministratorInfoList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AD_FormAdministratorInfoList.Designer.cs">
+      <DependentUpon>AD_FormAdministratorInfoList.cs</DependentUpon>
     </Compile>
     <Compile Include="AD_FormbackBook.cs">
       <SubType>Form</SubType>
@@ -129,8 +141,14 @@
     </Compile>
     <Compile Include="SqlHelper.cs" />
     <Compile Include="TagObject.cs" />
+    <EmbeddedResource Include="AD_FormAddAD.resx">
+      <DependentUpon>AD_FormAddAD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AD_FormAddOutBook.resx">
       <DependentUpon>AD_FormAddOutBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AD_FormAdministratorInfoList.resx">
+      <DependentUpon>AD_FormAdministratorInfoList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AD_FormbackBook.resx">
       <DependentUpon>AD_FormbackBook.cs</DependentUpon>

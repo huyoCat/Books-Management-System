@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -23,19 +16,8 @@ namespace Books_Management_System
 
         private void AD_FormAddOutBook_Load(object sender, EventArgs e)
         {
-            //InitSelect();//加载类别列表
-            //加载书籍信息
             InitBookInfo();
         }
-
-        //private void InitSelect()
-        //{
-        //    string sql = "select BSortId,BSortName from BookSortList";
-        //    DataTable dataTableSelectList = SqlHelper.GetDataTable(sql);
-        //    cbEdit_Bsort.DataSource = dataTableSelectList;
-        //    cbEdit_Bsort.DisplayMember = "BSortName";
-        //    cbEdit_Bsort.ValueMember = "BSortId";
-        //}
 
         private void InitBookInfo()
         {
@@ -48,7 +30,7 @@ namespace Books_Management_System
                 reLaod = tagObject.ReLoad;//赋值
             }
             //查询
-            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder" +
+            string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort" +
                 " from BookInfo where Bid=@Bid";
             SqlParameter paraID = new SqlParameter("@Bid", Bid);
             SqlDataReader dataReader = SqlHelper.ExecuteReader(sql, paraID);
@@ -60,8 +42,6 @@ namespace Books_Management_System
                 lbBwriter.Text = dataReader["Bwriter"].ToString();
                 lbBpublisher.Text = dataReader["Bpublisher"].ToString();
                 lbBsort.Text = dataReader["Bsort"].ToString();
-                lbBsum.Text = dataReader["Bsum"].ToString();
-                lbBremainder.Text = dataReader["Bremainder"].ToString();
                 tbOutDate.Text = DateTime.Now.ToString("yyyy.MM.dd");
                 tbBackDate.Text = DateTime.Now.AddDays(30).ToString("yyyy.MM.dd");
             }
@@ -76,9 +56,6 @@ namespace Books_Management_System
             string Bwriter = lbBwriter.Text.Trim();
             string Bpublisher = lbBpublisher.Text.Trim();
             string Bsort = lbBsort.Text.Trim();
-            string Bsum = lbBsum.Text.Trim();
-            //这里要做一个借出然后减掉
-            string Bremainder = lbBremainder.Text.Trim();
             string Bout = tbOutDate.Text.Trim();
             string Bback = tbBackDate.Text.Trim();
             int Rid = int.Parse(tbRid.Text);
@@ -87,119 +64,114 @@ namespace Books_Management_System
             {
                 if (string.IsNullOrEmpty(Bout))
                 {
-                    MessageBox.Show("请输入借出日期！", "办理借阅提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("请输入借出日期！", "办理借阅提示",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (string.IsNullOrEmpty(Bback))
                 {
-                    MessageBox.Show("请输入归还日期！", "办理借阅提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("请输入归还日期！", "办理借阅提示",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                if (Rid==0)
+                //判断读者是否存在
                 {
-                    MessageBox.Show("请输入借阅读者号！", "办理借阅提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-            }
-
-            //判断是否存在
-            {
-                string sqlExists = "select count(1) from LendBookInfo where Bid=@Bid";
-                SqlParameter[] parameters =
-                {
-                    new SqlParameter("@Bid",Bid),
-                    new SqlParameter("@Bname",Bname),
-                    new SqlParameter("@Bwriter",Bwriter),
-                    new SqlParameter("@Bpublisher",Bpublisher),
-                    new SqlParameter("@Bsort",Bsort),
-                    new SqlParameter("@Bsum",Bsum),
-                    new SqlParameter("@Bremainder",Bremainder)
-                };
-                object oCount = SqlHelper.ExecuteScalar(sqlExists, parameters);
-                if (oCount == null || oCount == DBNull.Value || ((int)oCount) == 0)
-                {
-                    //string Bsort = getSort(BookSort);
-                    //执行添加
-                    string sqlEdit = "SET IDENTITY_INSERT LendBookInfo ON insert into LendBookInfo " +
-                        "(Bid,Bname,Bwriter,Bpublisher,Bsort,Bsum,Bremainder,Bout,Bback,Rid) values" +
-                        "(@Bid,@Bname,@Bwriter,@Bpublisher,@Bsort,@Bsum,@Bremainder,@Bout,@Bback,@Rid) " +
-                        "SET IDENTITY_INSERT LendBookInfo OFF";
-                    SqlParameter[] parametersEdit =
+                    if (Rid == 0)
                     {
-                        new SqlParameter("@Bid",Bid),
-                        new SqlParameter("@Bname",Bname),
-                        new SqlParameter("@Bwriter",Bwriter),
-                        new SqlParameter("@Bpublisher",Bpublisher),
-                        new SqlParameter("@Bsort",Bsort),
-                        new SqlParameter("@Bsum",Bsum),
-                        new SqlParameter("@Bremainder",Bremainder),
-                        new SqlParameter("@Bout",Bout),
-                        new SqlParameter("@Bback",Bback),
-                        new SqlParameter("@Rid",Rid)
-                    };
-
-                    //执行并返回
-                    int count = SqlHelper.ExecuteNonQuery(sqlEdit, parametersEdit);
-                    if (count > 0)
-                    {
-                        MessageBox.Show($"书籍: {Bname} 办理借阅成功", "办理借阅信息提示",
-                            MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                        //在馆数量-1
-                        string sqlBookList= " update BookInfo set Bremainder=@Bremainder-1 where Bid=@Bid";
-                        SqlParameter[] parameters1 =
-                    {
-                        new SqlParameter("@Bid",Bid),
-                        new SqlParameter("@Bname",Bname),
-                        new SqlParameter("@Bwriter",Bwriter),
-                        new SqlParameter("@Bpublisher",Bpublisher),
-                        new SqlParameter("@Bsort",Bsort),
-                        new SqlParameter("@Bsum",Bsum),
-                        new SqlParameter("@Bremainder",Bremainder),
-                        new SqlParameter("@Bout",Bout),
-                        new SqlParameter("@Bback",Bback),
-                        new SqlParameter("@Rid",Rid)
-                    };
-                        int count1 = SqlHelper.ExecuteNonQuery(sqlBookList, parameters1);
-                        string sqlLendBookList = " update LendBookInfo set Bremainder=@Bremainder-1 " +
-                            "where Bid=@Bid";
-                        SqlParameter[] parameters2 =
-                    {
-                        new SqlParameter("@Bid",Bid),
-                        new SqlParameter("@Bname",Bname),
-                        new SqlParameter("@Bwriter",Bwriter),
-                        new SqlParameter("@Bpublisher",Bpublisher),
-                        new SqlParameter("@Bsort",Bsort),
-                        new SqlParameter("@Bsum",Bsum),
-                        new SqlParameter("@Bremainder",Bremainder),
-                        new SqlParameter("@Bout",Bout),
-                        new SqlParameter("@Bback",Bback),
-                        new SqlParameter("@Rid",Rid)
-                    };
-                        int count2 = SqlHelper.ExecuteNonQuery(sqlLendBookList, parameters2);
-
-                        if (count1 <= 0 || count2 <= 0)
-                        {
-                            MessageBox.Show("数据库信息修改失败！");
-                        }
-
-                        //利用委托跨页面刷新
-                        reLaod.Invoke();
-                    }
-                    else
-                    {
-                        MessageBox.Show("办理借阅失败！", "办理借阅信息提示", 
+                        MessageBox.Show("请输入借阅读者号！", "办理借阅提示",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-                }
-                else
-                {
-                    MessageBox.Show("借阅信息已存在！", "办理借阅信息提示", 
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+
+                    string sql = "select count(1) from ReaderInfo where Rid=@Rid";
+
+                    //添加参数
+                    SqlParameter[] parameters =
+                    {
+                        new SqlParameter("@Rid", Rid)
+                    };
+
+                    object o = SqlHelper.ExecuteScalar(sql, parameters);
+                    //处理结果
+                    if (o == null || o == DBNull.Value || ((int)o == 0))
+                    {
+                        MessageBox.Show("请输入正确的读者号！", "办理借阅提示",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    else
+                    //判断是否存在
+                    {
+                        string sqlExists = "select count(1) from LendBookInfo where Bid=@Bid";
+                        SqlParameter[] parameters1 =
+                        {
+                            new SqlParameter("@Bid",Bid),
+                            new SqlParameter("@Bname",Bname),
+                            new SqlParameter("@Bwriter",Bwriter),
+                            new SqlParameter("@Bpublisher",Bpublisher),
+                            new SqlParameter("@Bsort",Bsort)
+                        };
+                        object oCount = SqlHelper.ExecuteScalar(sqlExists, parameters1);
+                        if (oCount == null || oCount == DBNull.Value || ((int)oCount) == 0)
+                        {
+                            //执行添加
+                            string sqlEdit = "SET IDENTITY_INSERT LendBookInfo ON insert into LendBookInfo " +
+                                "(Bid,Bname,Bwriter,Bpublisher,Bsort,Bout,Bback,Rid) values" +
+                                "(@Bid,@Bname,@Bwriter,@Bpublisher,@Bsort,@Bout,@Bback,@Rid) " +
+                                "SET IDENTITY_INSERT LendBookInfo OFF";
+                            SqlParameter[] parametersEdit =
+                            {
+                                    new SqlParameter("@Bid",Bid),
+                                    new SqlParameter("@Bname",Bname),
+                                    new SqlParameter("@Bwriter",Bwriter),
+                                    new SqlParameter("@Bpublisher",Bpublisher),
+                                    new SqlParameter("@Bsort",Bsort),
+                                    new SqlParameter("@Bout",Bout),
+                                    new SqlParameter("@Bback",Bback),
+                                    new SqlParameter("@Rid",Rid)
+                                };
+
+                            //执行并返回
+                            int count = SqlHelper.ExecuteNonQuery(sqlEdit, parametersEdit);
+                            if (count > 0)
+                            {
+                                MessageBox.Show($"书籍: {Bname} 办理借阅成功", "办理借阅信息提示",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                //修改为不可见
+                                string sqlBookList = " update BookInfo set IsDeleted=1 where Bid=@Bid";
+                                SqlParameter[] parameters2 =
+                            {
+                                    new SqlParameter("@Bid",Bid)
+                                };
+                                int count1 = SqlHelper.ExecuteNonQuery(sqlBookList, parameters2);
+
+
+                                if (count1 <= 0)
+                                {
+                                    MessageBox.Show("数据库信息修改失败！");
+                                }
+
+                                //利用委托跨页面刷新
+                                reLaod.Invoke();
+                            }
+                            else
+                            {
+                                MessageBox.Show("办理借阅失败！", "办理借阅信息提示",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("借阅信息已存在！", "办理借阅信息提示",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                    }
                 }
             }
         }

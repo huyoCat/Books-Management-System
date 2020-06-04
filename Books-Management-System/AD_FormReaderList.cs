@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -21,7 +15,7 @@ namespace Books_Management_System
         //加载所有读者信息，查询读者
         private void FormReaderList_Load(object sender, EventArgs e)
         {
-            string sql = "select Rid,Rscore from ReaderInfo";
+            string sql = "select Rid,Rpassword from ReaderInfo";
             DataTable dataTableReaderList = SqlHelper.GetDataTable(sql);
             DGVReaderList.DataSource = dataTableReaderList;
         }
@@ -30,7 +24,7 @@ namespace Books_Management_System
         {
             //获取关键字
             string keyWord = textBReaderSearch.Text.Trim();
-            string sql = "select Rid,Rscore from ReaderInfo";
+            string sql = "select Rid,Rpassword from ReaderInfo";
             sql += " where 1=1";
             sql += "and Rid like @Rid";
 
