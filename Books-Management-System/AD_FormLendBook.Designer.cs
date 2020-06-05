@@ -37,6 +37,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.DGVLendBookList = new System.Windows.Forms.DataGridView();
+            this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Bid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bwriter = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -118,6 +119,7 @@
             this.DGVLendBookList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVLendBookList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVLendBookList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColCheck,
             this.Bid,
             this.Bname,
             this.Bwriter,
@@ -133,6 +135,11 @@
             this.DGVLendBookList.Size = new System.Drawing.Size(843, 327);
             this.DGVLendBookList.TabIndex = 2;
             this.DGVLendBookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVLendBookList_CellContentClick);
+            // 
+            // ColCheck
+            // 
+            this.ColCheck.HeaderText = "选择";
+            this.ColCheck.Name = "ColCheck";
             // 
             // Bid
             // 
@@ -224,6 +231,7 @@
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.DataGridView DGVLendBookList;
         private System.Windows.Forms.Button bt_DelAll;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bid;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bname;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bwriter;

@@ -103,7 +103,7 @@ namespace Books_Management_System
                 if (oCount == null || oCount == DBNull.Value || ((int)oCount) == 0)
                 {
                     string Bsort = getSort(BookSort);
-                    //执行添加
+                    //执行修改
                     string sqlEdit = " update BookInfo set " +
                         "Bname=@Bname,Bwriter=@Bwriter,Bpublisher=@Bpublisher,Bsort=@Bsort" +
                         " where Bid=@Bid ";

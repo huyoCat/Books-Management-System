@@ -58,7 +58,7 @@ namespace Books_Management_System
             string Bsort = lbBsort.Text.Trim();
             string Bout = tbOutDate.Text.Trim();
             string Bback = tbBackDate.Text.Trim();
-            int Rid = int.Parse(tbRid.Text);
+            string Rid = tbRid.Text.Trim();
 
             //判空处理
             {
@@ -78,7 +78,7 @@ namespace Books_Management_System
 
                 //判断读者是否存在
                 {
-                    if (Rid == 0)
+                    if (Rid=="")
                     {
                         MessageBox.Show("请输入借阅读者号！", "办理借阅提示",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
