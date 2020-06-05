@@ -44,12 +44,12 @@
             this.textBox_Num.Name = "textBox_Num";
             this.textBox_Num.Size = new System.Drawing.Size(144, 21);
             this.textBox_Num.TabIndex = 0;
-            //this.textBox_Num.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox_password
             // 
             this.textBox_password.Location = new System.Drawing.Point(111, 94);
             this.textBox_password.Name = "textBox_password";
+            this.textBox_password.PasswordChar = '*';
             this.textBox_password.Size = new System.Drawing.Size(144, 21);
             this.textBox_password.TabIndex = 2;
             // 

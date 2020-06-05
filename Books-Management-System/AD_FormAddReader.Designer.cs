@@ -1,6 +1,6 @@
 ﻿namespace Books_Management_System
 {
-    partial class BO_FormAddReader
+    partial class AD_FormAddReader
     {
         /// <summary>
         /// Required designer variable.

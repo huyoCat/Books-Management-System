@@ -88,11 +88,11 @@
     <Compile Include="AD_FormoutBook.Designer.cs">
       <DependentUpon>AD_FormoutBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="BO_FormAddReader.cs">
+    <Compile Include="AD_FormAddReader.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BO_FormAddReader.Designer.cs">
-      <DependentUpon>BO_FormAddReader.cs</DependentUpon>
+    <Compile Include="AD_FormAddReader.Designer.cs">
+      <DependentUpon>AD_FormAddReader.cs</DependentUpon>
     </Compile>
     <Compile Include="AD_FormBooksList.cs">
       <SubType>Form</SubType>
@@ -162,8 +162,8 @@
     <EmbeddedResource Include="AD_FormoutBook.resx">
       <DependentUpon>AD_FormoutBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BO_FormAddReader.resx">
-      <DependentUpon>BO_FormAddReader.cs</DependentUpon>
+    <EmbeddedResource Include="AD_FormAddReader.resx">
+      <DependentUpon>AD_FormAddReader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AD_FormBooksList.resx">
       <DependentUpon>AD_FormBooksList.cs</DependentUpon>

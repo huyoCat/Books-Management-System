@@ -167,7 +167,7 @@ namespace Books_Management_System
                         }
                         else
                         {
-                            MessageBox.Show("借阅信息已存在！", "办理借阅信息提示",
+                            MessageBox.Show("书籍已外借！", "办理借阅信息提示",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }

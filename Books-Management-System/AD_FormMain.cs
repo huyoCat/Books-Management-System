@@ -73,7 +73,7 @@ namespace Books_Management_System
         //添加读者
         private void AddReader_Click(object sender, EventArgs e)
         {
-            BO_FormAddReader formAddReader = new BO_FormAddReader();
+            AD_FormAddReader formAddReader = new AD_FormAddReader();
             formAddReader.MdiParent = this;
             formAddReader.Show();
         }

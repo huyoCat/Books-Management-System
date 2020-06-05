@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Books_Management_System
 {
-    public partial class BO_FormAddReader : Form
+    public partial class AD_FormAddReader : Form
     {
-        public BO_FormAddReader()
+        public AD_FormAddReader()
         {
             InitializeComponent();
         }

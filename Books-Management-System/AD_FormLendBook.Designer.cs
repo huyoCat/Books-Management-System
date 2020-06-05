@@ -61,13 +61,13 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(917, 56);
+            this.groupBox1.Size = new System.Drawing.Size(843, 56);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // bt_DelAll
             // 
-            this.bt_DelAll.Location = new System.Drawing.Point(753, 14);
+            this.bt_DelAll.Location = new System.Drawing.Point(726, 14);
             this.bt_DelAll.Name = "bt_DelAll";
             this.bt_DelAll.Size = new System.Drawing.Size(75, 23);
             this.bt_DelAll.TabIndex = 4;
@@ -111,6 +111,7 @@
             // 
             // DGVLendBookList
             // 
+            this.DGVLendBookList.AllowUserToAddRows = false;
             this.DGVLendBookList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -129,7 +130,7 @@
             this.DGVLendBookList.Location = new System.Drawing.Point(12, 74);
             this.DGVLendBookList.Name = "DGVLendBookList";
             this.DGVLendBookList.RowTemplate.Height = 23;
-            this.DGVLendBookList.Size = new System.Drawing.Size(917, 327);
+            this.DGVLendBookList.Size = new System.Drawing.Size(843, 327);
             this.DGVLendBookList.TabIndex = 2;
             this.DGVLendBookList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVLendBookList_CellContentClick);
             // 
@@ -200,7 +201,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 413);
+            this.ClientSize = new System.Drawing.Size(867, 413);
             this.Controls.Add(this.DGVLendBookList);
             this.Controls.Add(this.groupBox1);
             this.Name = "AD_FormLendBook";
