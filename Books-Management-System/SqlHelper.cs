@@ -10,7 +10,7 @@ namespace Books_Management_System
         //private static readonly string connectionString = "server=.;database=BooksManagementSystem;Integrated Security=true";
         //SQL server验证
         public static readonly string connectionString = 
-            "server=.;database=BooksManagementSystem;uid=sa;pwd=1064534251";
+            "server=.;database=BooksManagementSystem;uid=s;pwd=你的密码";
         public static object ExecuteScalar(string sql,params SqlParameter[] parameters)
         {
             object o = null;
