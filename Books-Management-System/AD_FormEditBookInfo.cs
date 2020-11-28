@@ -13,6 +13,7 @@ namespace Books_Management_System
         }
 
         private int Bid = 0;
+        private string BSortName = null;
         private Action reLaod = null;
 
         private void AD_FormEditBookInfo_Load(object sender, EventArgs e)
@@ -39,19 +40,29 @@ namespace Books_Management_System
                 //int.TryParse(this.Tag.ToString(), out Bid);
                 TagObject tagObject = (TagObject)this.Tag;
                 Bid = tagObject.Bid;
+                BSortName = tagObject.BSortName;
                 reLaod = tagObject.ReLoad;//赋值
             }
             //查询
             string sql = "select Bid,Bname,Bwriter,Bpublisher,Bsort from BookInfo where Bid=@Bid";
             SqlParameter paraID = new SqlParameter("@Bid", Bid);
             SqlDataReader dataReader = SqlHelper.ExecuteReader(sql, paraID);
+            int BSortId = getBSortId(BSortName);
+
+            string sql1 = "select BSortId,BSortName from BookSortList";
+            DataTable dataTableSelectSort = SqlHelper.GetDataTable(sql1);
+
+            cbEdit_Bsort.DataSource = dataTableSelectSort;
+            cbEdit_Bsort.DisplayMember = "BSortName";
+            cbEdit_Bsort.ValueMember = "BSortId";
+            cbEdit_Bsort.SelectedIndex = BSortId;
+
             //读取数据
             if (dataReader.Read())
             {
                 tbEdit_Bname.Text = dataReader["Bname"].ToString();
                 tbEdit_Bwriter.Text = dataReader["Bwriter"].ToString();
                 tbEdit_Bpublisher.Text = dataReader["Bpublisher"].ToString();
-                cbEdit_Bsort.SelectedItem = dataReader["Bsort"].ToString();
             }
             dataReader.Close();
         }
@@ -90,7 +101,7 @@ namespace Books_Management_System
 
             //判断是否存在
             {
-                string sqlExists = "select count(1) from BookInfo where Bid=@Bid and Bid<>@Bid";
+                string sqlExists = "select count(1) from BookInfo where Bname=@Bname and Bwriter=@Bwriter";
                 SqlParameter[] parameters =
                 {
                     new SqlParameter("@Bid",Bid),
@@ -169,6 +180,30 @@ namespace Books_Management_System
                     break;
             }
             return Bsort;
+        }
+
+        private int getBSortId(string BSortNmae)
+        {
+            int id = 0;
+            switch (BSortNmae)
+            {
+                case "艺术":
+                    id = 1;
+                    break;
+                case "计算机技术、自动化技术":
+                    id = 1;
+                    break;
+                case "医药、卫生":
+                    id = 2;
+                    break;
+                case "哲学、宗教":
+                    id = 3;
+                    break;
+                case "政治、法律":
+                    id = 4;
+                    break;
+            }
+            return id;
         }
 
         private void btAdd_close_Click(object sender, EventArgs e)

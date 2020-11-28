@@ -30,6 +30,13 @@ namespace Books_Management_System
             }
                 return o;
         }
+
+        /// <summary>
+        /// 获取数据列表
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public static DataTable GetDataTable(string sql,params SqlParameter[] parameters)
         {
             DataTable dataTable = new DataTable();

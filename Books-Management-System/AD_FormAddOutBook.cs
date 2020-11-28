@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Books_Management_System
@@ -72,6 +73,13 @@ namespace Books_Management_System
                 if (string.IsNullOrEmpty(Bback))
                 {
                     MessageBox.Show("请输入归还日期！", "办理借阅提示",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (IsDate(Bout) == false || IsDate(Bback) == false)
+                {
+                    MessageBox.Show("请输入正确的日期格式", "办理借阅提示",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -174,6 +182,17 @@ namespace Books_Management_System
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// 是否为日期型字符串
+        /// </summary>
+        /// <param name="StrSource">日期字符串(2008.05.08)</param>
+        /// <returns></returns>
+        public static bool IsDate(string StrSource)
+        {
+            return Regex.IsMatch(StrSource, 
+                @"^((((1[6-9]|[2-9]\d)\d{2}).(0?[13578]|1[02]).(0?[1-9]|[12]\d|3[01]))|(((1[6-9]|[2-9]\d)\d{2}).(0?[13456789]|1[012]).(0?[1-9]|[12]\d|30))|(((1[6-9]|[2-9]\d)\d{2}).0?2.(0?[1-9]|1\d|2[0-9]))|(((1[6-9]|[2-9]\d)(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00))-0?2-29-))$");
         }
 
         private void btAdd_close_Click(object sender, EventArgs e)

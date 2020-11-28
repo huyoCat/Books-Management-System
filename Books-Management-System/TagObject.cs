@@ -9,6 +9,7 @@ namespace Books_Management_System
     public class TagObject
     {
         public int Bid { get; set; }
+        public string BSortName { get; set; }
         public Action ReLoad { get; set; }
     }
 }

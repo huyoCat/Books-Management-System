@@ -157,12 +157,14 @@ namespace Books_Management_System
                     //修改操作
                     reLoad = LoadAllBookList;
                     int Bid = (int)dataRow["Bid"];
+                    string BSortName = (string)dataRow["Bsort"];
                     AD_FormEditBookInfo editBookInfo = new AD_FormEditBookInfo();
                     //传值
                     //editBookInfo.Tag = Bid;
                     editBookInfo.Tag = new TagObject()
                     {
                         Bid = Bid,
+                        BSortName = BSortName,
                         ReLoad = reLoad
                     };
                     editBookInfo.MdiParent = this.MdiParent;//指定修改页面的父容器

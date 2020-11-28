@@ -46,6 +46,7 @@
             this.Bsort = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColEdit = new System.Windows.Forms.DataGridViewLinkColumn();
             this.ColDel = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox_searchCondition.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVBookList)).BeginInit();
             this.SuspendLayout();
@@ -235,5 +236,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Bsort;
         private System.Windows.Forms.DataGridViewLinkColumn ColEdit;
         private System.Windows.Forms.DataGridViewLinkColumn ColDel;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
